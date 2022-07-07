@@ -13,7 +13,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 // import not in use since we are using AssertJ for methods
@@ -88,6 +90,8 @@ class StudentServiceTest {
                 .hasMessageContaining(
                 "Email " + student.getEmail() + " taken"
         );
+
+        verify(studentRepository, never()).save(any());
 
     }
 
