@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.mockito.Mockito.verify;
+
 // import not in use since we are using AssertJ for methods
 // import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +32,10 @@ class StudentServiceTest {
 
     @Test
     void canGetAllStudents() {
-
+        // when
+        underTest.getAllStudents();
+        // then
+        verify(studentRepository).findAll();
     }
 
     @Test
