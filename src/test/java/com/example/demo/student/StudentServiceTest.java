@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 // import not in use since we are using AssertJ for methods
@@ -76,6 +77,9 @@ class StudentServiceTest {
                 Gender.MALE
         );
 
+        given(studentRepository.selectExistsEmail(student.getEmail()))
+                .willReturn(true);
+
         // when
         // then
         assertThatThrownBy(()
@@ -84,8 +88,6 @@ class StudentServiceTest {
                 .hasMessageContaining(
                 "Email " + student.getEmail() + " taken"
         );
-
-
 
     }
 
