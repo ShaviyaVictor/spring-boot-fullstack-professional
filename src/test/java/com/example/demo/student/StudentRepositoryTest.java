@@ -14,7 +14,7 @@ class StudentRepositoryTest {
     private StudentRepository underTest;
 
     @Test
-    void itShouldCheckIfStudentExistsEmail() {
+    void itShouldCheckIfStudentEmailExists() {
 
         // given
         String email = "shavic@gmail.com";
@@ -30,6 +30,20 @@ class StudentRepositoryTest {
 
         // then
         assertThat(exists).isTrue();
+
+    }
+
+    @Test
+    void itShouldCheckIfStudentEmailDoesNotExist() {
+
+        // given
+        String email = "shavic@gmail.com";
+
+        // when
+        boolean exists = underTest.selectExistsEmail(email);
+
+        // then
+        assertThat(exists).isFalse();
 
     }
 }
