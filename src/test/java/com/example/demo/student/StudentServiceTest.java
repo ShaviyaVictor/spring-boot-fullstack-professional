@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.verify;
 
 // import not in use since we are using AssertJ for methods
@@ -59,7 +60,7 @@ class StudentServiceTest {
         verify(studentRepository).save(studentArgumentCaptor.capture());
         Student capturedStudent = studentArgumentCaptor.getValue();
 
-        
+        assertThat(capturedStudent).isEqualTo(student);
 
     }
 
